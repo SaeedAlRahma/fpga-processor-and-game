@@ -140,8 +140,7 @@ another register, with a write enable that is only active on sw -9.
 The output of this register
 gets sent to the actual LEDs on the seven segment displays. In this way, the scoreboard will
 be updated at once instead of ones, then tens, then negative separately.
-### Game (Assembly)
-#### Game Logic (Assembly)
+### Game Logic (Assembly)
 Variables:
 
 Register 1 was set to value 1 and used as a constant 1 throughout the assembly code.
@@ -170,8 +169,8 @@ Register 29 was used for button left.
 
 Register 30 was used for button right.
 
-#### Game Assembly Code Logic (general layout):
-##### Initialization
+### Game Assembly Code Logic (general layout):
+#### Initialization
 Initialize certain registers with constants
   - some used for easy comparison, others for timers
   
@@ -181,7 +180,7 @@ Initialize column data to 8 in memory (8 = off the board = no enemies)
 Initialize player position to column 3
 
 Update VGA display
-##### Gameplay code (move player loop):
+#### Gameplay code (move player loop):
 Continuously check for input
 
 If button pressed, move player
@@ -191,7 +190,7 @@ one column per press
   - update game cycle timer with lost time from stall
   
 When game cycle timer ends, do gamecycle code and reset timer
-##### Gamecycle code
+#### Gamecycle code
 Move enemies down
   - series of loads and stores, moving col/color 6 (row 6) to col/color 5 (row 5) data
 address, 5 to 4, …, 2 to 0
@@ -211,7 +210,7 @@ timer, and adjust the amount we compensate this timer when we stall for a button
 Update VGA
 
 Repeat Gameplay code
-##### Data
+#### Data
 We reserved certain data addresses to hold the data for the column/color in each row
 (that way, we didn’t have to store the row data, we just knew, for example, that the data in
 data address 0 corresponded to the column # of the enemy in row 0).
